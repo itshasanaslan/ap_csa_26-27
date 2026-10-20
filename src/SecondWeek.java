@@ -1,6 +1,5 @@
+import java.time.LocalDateTime;
 import java.util.Scanner;
-
-
 
 public class SecondWeek {
 
@@ -41,24 +40,46 @@ public class SecondWeek {
          * System.out.println("Happy birthday. Now you are: " + age);
          * age--;
          */
-
-
-       
-        Scanner reader = new Scanner(System.in);
-          System.out.print("Enter your name:");
-        String name = reader.nextLine();
         
-        System.out.println("Welcome " + name);
 
-        // have two variables
-        // first name
-        // lastname
-        // age
-        // Hello first name last name. You are age years old.
-        // \n
+        // "\n"
+        Scanner reader = new Scanner(System.in);
+
+        System.out.print("Enter your age:");
+        int age = reader.nextInt();
+        age++;
+
+      //  (get rid of the )consume the new line in the buffer
+      reader.nextLine();
+
+            // reader.next() to read a word
+        System.out.print("Enter your name:");
+        String name = reader.nextLine();
+
+        System.out.print("Enter your last name:");
+        String lastName = reader.nextLine();
+
+        System.out.println("Hello, mr. " + lastName + ", " + name + ". You are " + age + " years old");
+        reader.close();
 
 
+        int seven = 7;
+        int two = 2;
+// casting -> type conversion
+    System.out.println( (double) seven / two); // 3.5
+    
 
+
+    double x = 1.0; // 0.333333333
+
+    double firstValue = 0.3; // 0.300000000000000000005
+    double secondValue = 0.4; 
+// double / floating number truncation
+    boolean areTheyEqual = (firstValue + 0.1) == secondValue;
+    
+
+    double numberToBeRounded = 1.3;
+    int rounded = (int) (numberToBeRounded + 0.5);
 
 
 
