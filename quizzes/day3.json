@@ -1,0 +1,174 @@
+{
+  "quiz_title": "AP CS A - Day 3 Complete Exit Quiz (12 Questions)",
+  "topic": "Constants, Scanner Input, Type Casting, AP Rounding, & Compound Assignment",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the output of the following code snippet?",
+      "code": "final int MAX_ATTEMPTS = 3;\nMAX_ATTEMPTS = 5;\nSystem.out.println(MAX_ATTEMPTS);",
+      "options": [
+        "3",
+        "5",
+        "Compiler Error (Syntax Error)",
+        "Runtime Error (Exception)"
+      ],
+      "correct_answer_index": 2,
+      "correct_answer": "Compiler Error (Syntax Error)",
+      "explanation": "A variable declared with the 'final' keyword is immutable once initialized. Attempting to reassign a value to MAX_ATTEMPTS causes the Java compiler to throw an error: 'cannot assign a value to final variable MAX_ATTEMPTS'."
+    },
+    {
+      "id": 2,
+      "question": "What is printed by the following statement?",
+      "code": "System.out.println((int) 4.8 + (int) 3.2);",
+      "options": [
+        "8.0",
+        "8",
+        "7",
+        "7.0"
+      ],
+      "correct_answer_index": 2,
+      "correct_answer": "7",
+      "explanation": "Explicit casting with (int) truncates (drops) the fractional portion without rounding. (int) 4.8 becomes 4, and (int) 3.2 becomes 3. The expression evaluates to 4 + 3 = 7."
+    },
+    {
+      "id": 3,
+      "question": "What is printed by the following statement?",
+      "code": "System.out.println((double) (9 / 2));",
+      "options": [
+        "4.5",
+        "4.0",
+        "4",
+        "4.50"
+      ],
+      "correct_answer_index": 1,
+      "correct_answer": "4.0",
+      "explanation": "Due to parentheses precedence, integer division 9 / 2 executes first, truncating to 4. Casting 4 to (double) afterwards yields 4.0."
+    },
+    {
+      "id": 4,
+      "question": "What is printed when the cast occurs BEFORE the division?",
+      "code": "System.out.println((double) 9 / 2);",
+      "options": [
+        "4.0",
+        "4.5",
+        "4",
+        "4.50"
+      ],
+      "correct_answer_index": 1,
+      "correct_answer": "4.5",
+      "explanation": "Casting has higher precedence than division. (double) 9 evaluates to 9.0 first. Then floating-point division 9.0 / 2 yields 4.5."
+    },
+    {
+      "id": 5,
+      "question": "Which Java expression correctly rounds a positive floating-point number x to the nearest integer?",
+      "code": null,
+      "options": [
+        "(int) x + 0.5",
+        "(int)(x + 0.5)",
+        "(double)(x + 0.5)",
+        "Math.round((int) x)"
+      ],
+      "correct_answer_index": 1,
+      "correct_answer": "(int)(x + 0.5)",
+      "explanation": "Adding 0.5 before casting with (int) shifts any decimal >= 0.5 up to the next integer threshold, correctly rounding positive floating-point numbers."
+    },
+    {
+      "id": 6,
+      "question": "What is the output of the following code snippet?",
+      "code": "int score = 10;\nscore *= 2 + 3;\nSystem.out.println(score);",
+      "options": [
+        "23",
+        "25",
+        "50",
+        "15"
+      ],
+      "correct_answer_index": 2,
+      "correct_answer": "50",
+      "explanation": "Compound assignment operators (*=) have lower precedence than addition (+). The right-hand side 2 + 3 evaluates to 5 first. The statement expands to score = score * 5, which gives 10 * 5 = 50."
+    },
+    {
+      "id": 7,
+      "question": "Why does the following code skip prompting the user for their name?",
+      "code": "System.out.print(\"Enter age: \");\nint age = scanner.nextInt();\nSystem.out.print(\"Enter name: \");\nString name = scanner.nextLine();",
+      "options": [
+        "scanner.nextInt() throws an exception when followed by scanner.nextLine().",
+        "scanner.nextInt() leaves the newline character ('\\n') in the buffer, which scanner.nextLine() immediately consumes as an empty String.",
+        "scanner.nextLine() is outside the AP CS A Java subset.",
+        "scanner.nextInt() automatically closes the Scanner stream."
+      ],
+      "correct_answer_index": 1,
+      "correct_answer": "scanner.nextInt() leaves the newline character ('\\n') in the buffer, which scanner.nextLine() immediately consumes as an empty String.",
+      "explanation": "scanner.nextInt() reads only the integer and leaves '\\n' sitting in the input buffer. The subsequent scanner.nextLine() reads up to '\\n', consuming it as an empty String without waiting for user input."
+    },
+    {
+      "id": 8,
+      "question": "What is printed by the following code snippet?",
+      "code": "int count = 5;\ncount++;\ncount += 2;\nSystem.out.println(count);",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "5"
+      ],
+      "correct_answer_index": 2,
+      "correct_answer": "8",
+      "explanation": "count++ increments count from 5 to 6. Then count += 2 adds 2 to 6, updating count to 8."
+    },
+    {
+      "id": 9,
+      "question": "Why does the following equality check print false?",
+      "code": "double a = 0.1;\ndouble b = 0.2;\nSystem.out.println(a + b == 0.3);",
+      "options": [
+        "true",
+        "false",
+        "Compiler Error",
+        "Runtime Error"
+      ],
+      "correct_answer_index": 1,
+      "correct_answer": "false",
+      "explanation": "Because floating-point numbers are represented in binary floating-point (8-byte double), values like 0.1 and 0.2 cannot be stored with exact precision, yielding 0.30000000000000004 != 0.3."
+    },
+    {
+      "id": 10,
+      "question": "What is the key difference between scanner.next() and scanner.nextLine()?",
+      "code": null,
+      "options": [
+        "next() reads integers, while nextLine() reads floating-point numbers.",
+        "next() reads a single token/word up to the first whitespace, while nextLine() reads the entire line up to '\\n'.",
+        "nextLine() skips all leading whitespace automatically, while next() does not.",
+        "next() can only be called once per program execution."
+      ],
+      "correct_answer_index": 1,
+      "correct_answer": "next() reads a single token/word up to the first whitespace, while nextLine() reads the entire line up to '\\n'.",
+      "explanation": "scanner.next() skips leading whitespace and reads up to the next space/whitespace token, whereas scanner.nextLine() reads all text up to the newline character."
+    },
+    {
+      "id": 11,
+      "question": "What is printed by the following code snippet?",
+      "code": "int val = 17;\nval %= 5;\nval *= 3;\nSystem.out.println(val);",
+      "options": [
+        "6",
+        "2",
+        "10",
+        "15"
+      ],
+      "correct_answer_index": 0,
+      "correct_answer": "6",
+      "explanation": "val %= 5 evaluates 17 % 5 = 2. Then val *= 3 evaluates 2 * 3 = 6."
+    },
+    {
+      "id": 12,
+      "question": "Which Java expression correctly rounds a negative floating-point number y (e.g., -3.8) to the nearest integer?",
+      "code": null,
+      "options": [
+        "(int)(y - 0.5)",
+        "(int)(y + 0.5)",
+        "(int) y - 0.5",
+        "(double)(y - 0.5)"
+      ],
+      "correct_answer_index": 0,
+      "correct_answer": "(int)(y - 0.5)",
+      "explanation": "For negative numbers, subtracting 0.5 before casting with (int) shifts values <= -0.5 down toward the more negative integer, correctly rounding negative floating-point values."
+    }
+  ]
+}
