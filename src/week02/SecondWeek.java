@@ -1,16 +1,56 @@
-import java.time.LocalDateTime;
+package week02;
 import java.util.Scanner;
+import week01.MyFirstApp;
 
 public class SecondWeek {
 
-    public static void main(String[] args) {
+    // THIS IS THE MAIN METHOD. MY APP STARTS FROM HERE.
 
-        // runtime error
+
+    
+    public static void main(String[] args) {
+       //int borrowedNum = MyFirstApp.sayHello();
+       //System.out.println("And from the second week, the num is" + borrowedNum);
+
+        int myNumber = 10;
+
+        int result = calculate(myNumber);
+        System.out.println(result);
+
+        System.out.println("My number in the main is:" + result);
+     
+    }
+
+    public static int calculate(int myNumber) {
+        // before calculation, increment myNumber by 1
+        myNumber++;
+        System.out.println("My number has changed to " + myNumber);
+        int result = myNumber * 3;
+        return result;
+    }
+
+// method header (method signature)
+    public static String registerAndWelcome(String myDay){
+       myDay = "Monday";
+        Scanner reader = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = reader.nextLine();
+        System.out.print("Enter your age: ");
+        int age = reader.nextInt();
+        System.out.println("Hello, " + name + " you are " +  age + " years old. Today is " + myDay);
+    
+        return name;
+    }
+
+
+
+    public static void tuesday()  {
+          // runtime error
         // System.out.println(5 / 0);
         // primitive char boolean int double
         // declaration initialization
 
-        // COMMENT line heeyyy
+        // Javadoc -> java documentation
         /*
          * 
          * String firstName = "emir";
@@ -41,6 +81,14 @@ public class SecondWeek {
          * age--;
          */
         
+
+        /* 
+        
+            double numberToBeRounded = 1.3;
+            int rounded = (int) (numberToBeRounded + 0.5);
+        
+        */
+
 
         // "\n"
         Scanner reader = new Scanner(System.in);
@@ -81,7 +129,12 @@ public class SecondWeek {
     double numberToBeRounded = 1.3;
     int rounded = (int) (numberToBeRounded + 0.5);
 
+   
+
 
 
     }
+
+
+
 }

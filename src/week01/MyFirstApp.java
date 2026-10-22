@@ -1,3 +1,5 @@
+package week01;
+
 public class MyFirstApp {                    
 
     public static void main (String[] args) {
@@ -43,6 +45,12 @@ public class MyFirstApp {
         System.out.println(17 % 4);
     }
 
+    public static int sayHello(){
+        System.out.println("Hellloo from the first week");
+        int myLuckyNumber = 33;
+
+        return myLuckyNumber;
+    }
 
 
 }

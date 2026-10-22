@@ -1,0 +1,163 @@
+{
+  "day_id": "day4",
+  "quiz_title": "AP CS A - Day 4 Exit Quiz",
+  "topic": "APIs and Packages, Javadoc Comments, Preconditions and Postconditions, Method Signatures, Call-by-Value, Method Overloading, Static Method Calls, Math Class Methods, AP Math.random Range Formula",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which of the following Java packages is automatically imported into every Java program without requiring an explicit import statement?",
+      "code": null,
+      "options": [
+        "java.util",
+        "java.lang",
+        "java.io",
+        "java.math"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "The java.lang package (which contains fundamental classes like System, Math, String, Integer, Double) is automatically imported by Java. Other packages like java.util (which contains Scanner) require an explicit import statement."
+    },
+    {
+      "id": 2,
+      "question": "A Javadoc comment for a method states: Precondition: x >= 0. What does this precondition imply?",
+      "code": null,
+      "options": [
+        "The method will automatically throw an exception if x < 0.",
+        "The caller must ensure x >= 0 before invoking the method; the method is not required to handle x < 0.",
+        "The method will return true if x >= 0 and false otherwise.",
+        "The method guarantees that x will remain greater than or equal to 0 after execution completes."
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A precondition is a requirement that must be satisfied by the caller BEFORE invoking the method. The method implementation assumes the precondition holds true and is not required to check for or handle invalid inputs."
+    },
+    {
+      "id": 3,
+      "question": "Consider the following method header and documentation:\n/**\n * Calculates square root.\n * Precondition: val >= 0.0\n * Postcondition: Returns non-negative square root of val\n */\npublic static double calculateSqrt(double val)\n\nWhich of the following best describes the postcondition?",
+      "code": null,
+      "options": [
+        "It guarantees that the argument passed by the caller is positive.",
+        "It specifies the condition or guarantee that the method promises to satisfy upon completion.",
+        "It requires the caller to check if the returned value is correct.",
+        "It forces the Java compiler to verify the return type at runtime."
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A postcondition describes the state or result guaranteed by the method AFTER it finishes executing, provided that the precondition was satisfied."
+    },
+    {
+      "id": 4,
+      "question": "Consider the following method definition:\npublic static void printGreeting(String name) {\n    System.out.println(\"Hello, \" + name);\n}\n\nWhich statement will cause a compiler error if executed in main?",
+      "code": "printGreeting(\"Alex\");",
+      "options": [
+        "printGreeting(\"Alex\");",
+        "String user = \"Alex\"; printGreeting(user);",
+        "System.out.println(printGreeting(\"Alex\"));",
+        "printGreeting(\"Alex\" + \"!\");"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "printGreeting is a void method, meaning it returns no value. Attempting to pass its result into System.out.println() causes a compiler error because println requires a value argument, and a void expression has no value."
+    },
+    {
+      "id": 5,
+      "question": "What is printed by the following code snippet?",
+      "code": "public static void modify(int x) {\n    x = x * 2;\n}\n\npublic static void main(String[] args) {\n    int num = 5;\n    modify(num);\n    System.out.println(num);\n}",
+      "options": [
+        "5",
+        "10",
+        "0",
+        "Compiler Error"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Java uses call-by-value parameter passing for primitive types. When modify(num) is called, a copy of num (5) is passed to parameter x. Modifying x inside the method changes only the local parameter x, leaving the original variable num in main unchanged at 5."
+    },
+    {
+      "id": 6,
+      "question": "Which of the following method headers could coexist in the same class as public static int compute(int a, double b) without causing a compiler error?",
+      "code": null,
+      "options": [
+        "public static double compute(int x, double y)",
+        "public static int compute(int b, double a)",
+        "public static int compute(double a, int b)",
+        "public static void compute(int first, double second)"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Method overloading requires methods to have the same name but DIFFERENT parameter lists (types, count, or order). Changing only parameter variable names or return type does NOT overload a method and produces a compiler error. compute(double, int) changes the order of parameter types, making it a valid overload."
+    },
+    {
+      "id": 7,
+      "question": "Which of the following statements correctly calls the static method calculateTotal from a class named TaxCalculator located in the same package?",
+      "code": null,
+      "options": [
+        "TaxCalculator calc = new TaxCalculator(); calc.calculateTotal(100.0);",
+        "double total = TaxCalculator.calculateTotal(100.0);",
+        "double total = calculateTotal.TaxCalculator(100.0);",
+        "double total = TaxCalculator->calculateTotal(100.0);"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Class (static) methods belong to the class itself and are invoked using the dot operator directly on the class name: ClassName.methodName(arguments). Creating an object instance is not required."
+    },
+    {
+      "id": 8,
+      "question": "What are the resulting data types returned by Math.sqrt(16) and Math.abs(-5) respectively?",
+      "code": null,
+      "options": [
+        "int and int",
+        "double and int",
+        "double and double",
+        "int and double"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Math.sqrt() always returns a double (so Math.sqrt(16) yields 4.0). Math.abs(int) overloaded for an integer argument returns an int (5)."
+    },
+    {
+      "id": 9,
+      "question": "What is the exact range of real numbers returned by the method call Math.random()?",
+      "code": null,
+      "options": [
+        "[0.0, 1.0] (inclusive of 0.0 and 1.0)",
+        "[0.0, 1.0) (inclusive of 0.0, exclusive of 1.0)",
+        "(0.0, 1.0) (exclusive of 0.0 and 1.0)",
+        "(0.0, 1.0] (exclusive of 0.0, inclusive of 1.0)"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Math.random() generates a pseudo-random double in the semi-open interval [0.0, 1.0). It can return 0.0, but will never return 1.0."
+    },
+    {
+      "id": 10,
+      "question": "What is the output of the following code snippet?",
+      "code": "int val = (int) Math.random() * 6 + 1;\nSystem.out.println(val);",
+      "options": [
+        "A random integer from 1 to 6 inclusive.",
+        "A random integer from 0 to 5 inclusive.",
+        "Always 1",
+        "Compiler Error"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Type cast operator (int) has higher precedence than multiplication *. Thus (int) Math.random() executes first, truncating the value in [0.0, 1.0) down to 0. 0 * 6 + 1 evaluates to 1 every time. To fix this, parentheses must enclose the multiplication: (int)(Math.random() * 6) + 1."
+    },
+    {
+      "id": 11,
+      "question": "What are the minimum and maximum possible integer values produced by the expression (int)(Math.random() * 10) + 5?",
+      "code": null,
+      "options": [
+        "Min: 5, Max: 15",
+        "Min: 5, Max: 14",
+        "Min: 0, Max: 10",
+        "Min: 1, Max: 10"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Math.random() * 10 yields a double in [0.0, 10.0). Casting to (int) truncates to integers 0, 1, 2, ..., 9. Adding 5 shifts the range to 5, 6, 7, ..., 14. Thus, min is 5 and max is 14."
+    },
+    {
+      "id": 12,
+      "question": "What is printed by the following code snippet?",
+      "code": "double result = Math.pow(Math.abs(-3), 2);\nSystem.out.println(result);",
+      "options": [
+        "9",
+        "9.0",
+        "-9.0",
+        "6.0"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Math.abs(-3) evaluates to integer 3. Math.pow(3, 2) calculates 3^2 = 9 and returns a double, yielding 9.0."
+    }
+  ]
+}
