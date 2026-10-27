@@ -1,0 +1,163 @@
+{
+  "day_id": "day5",
+  "quiz_title": "AP CS A - Day 5 Exit Quiz",
+  "topic": "Static Methods, Math Class Methods, Math.random Range Formula, Reference Types vs Primitives, Object Instantiation, and String Methods (length, substring, indexOf, equals, compareTo)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which of the following method calls from the Math class is guaranteed to return a value of type double?",
+      "code": "int x = 16;\n// Which method call returns a double?",
+      "options": [
+        "Math.abs(x)",
+        "Math.sqrt(x)",
+        "Math.max(x, 20)",
+        "Math.min(x, 0)"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Math.sqrt() takes or auto-widens an int argument and always returns a double (e.g., Math.sqrt(16) returns 4.0). Math.abs(int), Math.max(int, int), and Math.min(int, int) return int values matching the int parameter type."
+    },
+    {
+      "id": 2,
+      "question": "What is the exact output printed when the following code snippet executes?",
+      "code": "double result = Math.pow(Math.abs(-3), 2);\nSystem.out.println(result);",
+      "options": [
+        "9",
+        "9.0",
+        "-9.0",
+        "6.0"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Math.abs(-3) evaluates to integer 3. Math.pow(3, 2) evaluates 3^2 = 9 and returns a double, producing 9.0."
+    },
+    {
+      "id": 3,
+      "question": "What is the minimum and maximum possible integer values produced by the expression (int)(Math.random() * 7) + 4?",
+      "code": null,
+      "options": [
+        "Min: 4, Max: 10",
+        "Min: 4, Max: 11",
+        "Min: 0, Max: 7",
+        "Min: 1, Max: 7"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Math.random() * 7 produces a double in [0.0, 7.0). Casting to (int) truncates decimal values to integers 0, 1, 2, 3, 4, 5, 6. Adding 4 shifts the range to 4 through 10 inclusive."
+    },
+    {
+      "id": 4,
+      "question": "A student writes the expression (int) Math.random() * 10 + 2 to generate a random integer from 2 to 11. What actually happens when this code runs?",
+      "code": "int val = (int) Math.random() * 10 + 2;\nSystem.out.println(val);",
+      "options": [
+        "It generates a random integer between 2 and 11 inclusive.",
+        "It causes a runtime ArithmeticException.",
+        "It evaluates to 2 every single time because the (int) cast takes precedence over multiplication.",
+        "It generates a random double between 2.0 and 12.0."
+      ],
+      "correct_answer_index": 2,
+      "explanation": "The type cast operator (int) has higher precedence than multiplication *. Therefore, (int) Math.random() evaluates first, truncating [0.0, 1.0) to 0. 0 * 10 + 2 = 2 every time. Proper formula requires parentheses: (int)(Math.random() * 10) + 2."
+    },
+    {
+      "id": 5,
+      "question": "Which statement best describes the fundamental difference between a primitive variable (like int) and an object reference variable (like String)?",
+      "code": null,
+      "options": [
+        "Primitive variables store actual raw values in memory, whereas reference variables store the memory address of an object.",
+        "Primitive variables can hold null, whereas object reference variables cannot.",
+        "Object reference variables require 4 bytes of memory, while primitive variables require 64 bytes.",
+        "Primitive variables can call methods, while reference variables cannot."
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Primitive variables (int, double, boolean) directly store their binary values. Reference variables store a memory reference (address) pointing to where the object resides, or null if pointing to no object."
+    },
+    {
+      "id": 6,
+      "question": "Consider the following declaration:\nString title;\nWhat is the default value of title before it is initialized or instantiated?",
+      "code": null,
+      "options": [
+        "\"\"",
+        "0",
+        "null",
+        "undefined"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Uninitialized object reference variables default to null, meaning they do not point to any object in memory."
+    },
+    {
+      "id": 7,
+      "question": "What is the value of str.length() for the String declaration String str = \"Java 2026\";?",
+      "code": null,
+      "options": [
+        "8",
+        "9",
+        "7",
+        "10"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "length() returns the total count of characters including spaces. \"Java 2026\" has 4 letters + 1 space + 4 digits = 9 characters."
+    },
+    {
+      "id": 8,
+      "question": "What is printed by the following code snippet?",
+      "code": "String code = \"OBJECTS\";\nSystem.out.println(code.substring(2, 5));",
+      "options": [
+        "JEC",
+        "BJE",
+        "JECT",
+        "BJEC"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "substring(from, to) extracts characters starting at index 'from' up to BUT EXCLUDING index 'to'. In \"OBJECTS\": O=0, B=1, J=2, E=3, C=4, T=5, S=6. Indices 2, 3, 4 are 'J', 'E', 'C', so code.substring(2, 5) yields \"JEC\"."
+    },
+    {
+      "id": 9,
+      "question": "What is the output of the following code snippet?",
+      "code": "String phrase = \"AP CS A Exam\";\nint idx = phrase.indexOf(\"CS\");\nint missing = phrase.indexOf(\"python\");\nSystem.out.println(idx + \" \" + missing);",
+      "options": [
+        "3 -1",
+        "3 0",
+        "2 -1",
+        "3 null"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "In \"AP CS A Exam\": 'A'(0), 'P'(1), ' '(2), 'C'(3), 'S'(4). So phrase.indexOf(\"CS\") returns 3. If a target substring is not found, indexOf() returns -1. Output is '3 -1'."
+    },
+    {
+      "id": 10,
+      "question": "What is printed by the following code snippet?",
+      "code": "String s1 = new String(\"AP\");\nString s2 = new String(\"AP\");\nSystem.out.println((s1 == s2) + \" \" + s1.equals(s2));",
+      "options": [
+        "true true",
+        "false true",
+        "true false",
+        "false false"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "The == operator compares memory addresses. Since s1 and s2 were instantiated separately using 'new', they point to different memory locations (s1 == s2 is false). The .equals() method compares string content (\"AP\" vs \"AP\"), which returns true."
+    },
+    {
+      "id": 11,
+      "question": "Which expression evaluates to true if String text starts with the word \"Data\"?",
+      "code": null,
+      "options": [
+        "text.substring(0, 4).equals(\"Data\")",
+        "text.indexOf(\"Data\") == 1",
+        "text.substring(0, 3).equals(\"Data\")",
+        "text.equals(\"Data\")"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "text.substring(0, 4) extracts the first 4 characters (indices 0, 1, 2, 3). Comparing that 4-character substring to \"Data\" using .equals() correctly checks if text starts with \"Data\"."
+    },
+    {
+      "id": 12,
+      "question": "What does the expression \"cat\".compareTo(\"dog\") return?",
+      "code": null,
+      "options": [
+        "A negative integer",
+        "A positive integer",
+        "Zero (0)",
+        "true"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "compareTo() compares strings lexicographically (alphabetically). Since \"cat\" comes BEFORE \"dog\" in alphabetical order, \"cat\".compareTo(\"dog\") returns a negative integer."
+    }
+  ]
+}
