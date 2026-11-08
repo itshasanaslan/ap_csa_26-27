@@ -5,7 +5,30 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
+    
 
+        String name = "mustafa kemal atatürk";
+    
+        String firstName = name.substring(0, 1).toUpperCase() + name.substring(1, name.indexOf(" "));
+        name = name.substring(name.indexOf(" ") +1 ); // "kemal atatürk";
+
+        
+        String middleName = name.substring(0, name.indexOf(" "));
+
+        String lastName = name.substring(name.indexOf(" ") + 1 );
+
+        //Mustafa
+        //ascii letters
+        // character is number 
+    
+        System.out.println(middleName);
+
+
+    }
+
+
+    public static void learningStrings() {
+        
         // Java is an OOP language.
         // Object-Oriented Programming Language
 
@@ -14,11 +37,11 @@ public class App {
         String title = new String("AP Computer Science A");
 
         int numOfLetters = title.length();
-
+        //
         System.out.println("Title has got " + numOfLetters + " letters.");
 
-        // substring
-        String firstTwoLetters = title.substring(3, 4);
+        // substring - print AP
+        String firstTwoLetters = title.substring(0, 2);
         System.out.println("The first two letters are: " + firstTwoLetters);
 
         // Remainder
@@ -32,19 +55,23 @@ public class App {
 
         String student1 = "bilge";
         String student2 = "bilge";
+        boolean areTheyEqual = student1 == student2;
 
         String studentOne = new String("bilge");
         String studentTwo = new String("bilge");
 
-        boolean areTheyEqual = student1 == student2;
         boolean areStringObjectsEqual = studentOne == studentTwo;
-
         System.out.println("String stored in the string pool are: " + areTheyEqual);
-        System.out.println("String stored in the HEAP  are: " + areStringObjectsEqual);
-        System.out.println("Are the PLACES of the studentOne and StudentTwo on the HEAP MEMORY the same: " +   (studentOne == studentTwo));
-        System.out.println("Are the values of the studentOne and StudentTwo the same: " +   studentOne.equals(studentTwo));
 
-       
+        System.out.println("String stored in the HEAP  are: " + areStringObjectsEqual);
+        System.out.println("Are the PLACES of the studentOne and StudentTwo on the HEAP MEMORY the same: "
+                + (studentOne == studentTwo));
+        System.out
+                .println("Are the values of the studentOne and StudentTwo the same: " + studentOne.equals(studentTwo));
+
+
+
+                boolean areTheyytheSame = studentTwo.equals(studentOne);
     }
 
     public static void diceSimulator() {
