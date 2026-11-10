@@ -1,0 +1,68 @@
+{
+  "quizTitle": "AP CS A Day 9 Exit Ticket: Boolean Logic & De Morgan's Laws",
+  "unit": "Unit 2: Selection and Iteration",
+  "day": 9,
+  "topic": "CED 2.1, 2.2, 2.5, 2.6 - Boolean Expressions, Relational & Logical Operators, Short-Circuit Evaluation & De Morgan's Laws",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Consider the following code segment:\n\nint x = 6;\nint y = 14;\nboolean check = (x * 2 >= y) && (y % x != 2);\n\nWhat is the value of check after the code segment executes?",
+      "options": [
+        "true",
+        "false",
+        "Compilation error",
+        "ArithmeticException"
+      ],
+      "correctAnswer": 1,
+      "explanation": "In the first sub-expression, x * 2 is 12, so (12 >= 14) evaluates to false. In a logical AND (&&) expression, if the first condition is false, short-circuit evaluation guarantees the entire expression evaluates to false without evaluating the second condition. Thus, check is false."
+    },
+    {
+      "id": 2,
+      "questionText": "Consider the following code segment:\n\nint n = 0;\nint total = 40;\nboolean result = (n != 0) && (total / n > 5);\n\nWhich of the following best describes what occurs when this code segment executes?",
+      "options": [
+        "result is set to false because n != 0 evaluates to false, and short-circuit evaluation prevents total / n from executing.",
+        "An ArithmeticException occurs because total / n divides by zero.",
+        "result is set to true because total / n evaluates to true.",
+        "A compilation error occurs because parentheses cannot be used inside a logical AND expression."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Due to short-circuit evaluation in a logical AND (&&) operation, if the left operand evaluates to false, Java terminates evaluation immediately and returns false. Because n != 0 evaluates to false, total / n > 5 is never evaluated, successfully avoiding an ArithmeticException (division by zero)."
+    },
+    {
+      "id": 3,
+      "questionText": "Consider the following Boolean expression where a and b are integer variables:\n\n!((a > 10) || (b <= 5))\n\nWhich of the following expressions is logically equivalent to the expression above under De Morgan's Laws?",
+      "options": [
+        "(a <= 10) || (b > 5)",
+        "(a <= 10) && (b > 5)",
+        "(a < 10) && (b >= 5)",
+        "(a > 10) && (b <= 5)"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Applying De Morgan's Law for a negated OR expression, !(A || B) becomes !A && !B. Inverting each relational sub-expression: !(a > 10) simplifies to (a <= 10), and !(b <= 5) simplifies to (b > 5). Combining them with logical AND yields (a <= 10) && (b > 5)."
+    },
+    {
+      "id": 4,
+      "questionText": "Assume that p, q, and r are boolean variables initialized as follows:\n\nboolean p = true;\nboolean q = false;\nboolean r = false;\n\nWhat is the value of the following expression?\n\n!p || q && r || !(q || r)",
+      "options": [
+        "false",
+        "true",
+        "Compilation error due to missing parentheses around logical operators",
+        "Cannot be determined without knowing the value of p"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Following Java operator precedence: (1) Parentheses: (q || r) is (false || false) = false. (2) Unary NOT (!): !p is !true = false; !(false) = true. The expression becomes: false || q && r || true. (3) Logical AND (&&): q && r is false && false = false. The expression becomes: false || false || true. (4) Logical OR (||): false || false is false; false || true is true. Thus, the expression evaluates to true."
+    },
+    {
+      "id": 5,
+      "questionText": "A student wants to execute a block of code only when the integer variable age is between 13 and 19, inclusive. The student writes the following condition:\n\n!(age < 13 || age > 19)\n\nWhich of the following is logically equivalent to the student's condition?",
+      "options": [
+        "age >= 13 || age <= 19",
+        "age > 13 && age < 19",
+        "age >= 13 && age <= 19",
+        "age <= 13 && age >= 19"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Under De Morgan's Law, !(A || B) is equivalent to !A && !B. Here, !(age < 13) becomes age >= 13, and !(age > 19) becomes age <= 19. Combining with && produces age >= 13 && age <= 19, representing the inclusive range [13, 19]."
+    }
+  ]
+}

@@ -4,9 +4,10 @@ public class Unit1Lab {
 
     public static void main(String[] args) {
 
-        System.out.println(generateMemberTag("bilge ayhan", 2009)); // i -> I
-        System.out.println(firstAndLastNameCapitalizer("bilge ayhan"));
-
+        // System.out.println(generateMemberTag("bilge ayhan", 2009)); // i -> I
+        // System.out.println(firstAndLastNameCapitalizer("bilge ayhan"));
+        String text = generateProductCode("trendyol", "computer");
+        System.out.println(text);
     }
 
     public static String firstAndLastNameCapitalizer(String fullName) {
@@ -39,11 +40,15 @@ public class Unit1Lab {
 
     // Task 2: Substring & length
     public static String generateProductCode(String storeName, String itemName) {
-        String storePrefix = storeName.substring(0, 2);
-        String itemPrefix = itemName.substring(0, 3);
+        String storePrefix = storeName.substring(0, 2).toUpperCase(); //tr
+     
+        String itemPrefix = itemName.substring(0, 3).toUpperCase();
         int itemLength = itemName.length();
-        
 
+        String value = storePrefix + "-" + itemPrefix + "-" + itemLength;
 
+        return value;
+
+    }
 
 }

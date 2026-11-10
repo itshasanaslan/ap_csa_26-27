@@ -1,25 +1,20 @@
 package week02;
 
 public class FlightMode {
-    
+
     public static void main(String[] args) {
         System.out.println("Hrlooo");
         int myNumber = 10;
         int number = 1111;
-      
 
-      int r =   doSomething(myNumber);
-      System.out.println(r);
+        int r = doSomething(myNumber);
+        System.out.println(r);
 
-
-
-            System.out.println(myNumber);
+        System.out.println(myNumber);
 
     }
 
-
-
-        // return type nameOfTheMethod ()
+    // return type nameOfTheMethod ()
     public static int doSomething(int myNumber) {
         // increment my num by 1
         // multiply by 5
@@ -29,17 +24,15 @@ public class FlightMode {
         return result;
     }
 
-
-// method signature/ header
-// METHOD OVERLOADING
-     public static int doSomething(double x) {
+    // method signature/ header
+    // METHOD OVERLOADING
+    public static int doSomething(double x) {
         // increment my num by 1
         // multiply by 5
-        myNumber++;
-        int result = myNumber * 5;
 
+        // casting -> type conversion
+        int result = (int) x * 5;
         return result;
     }
-
 
 }
