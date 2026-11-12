@@ -1,0 +1,72 @@
+{
+  "day_id": "day10",
+  "quiz_title": "AP CS A - Day 10 Exit Quiz: Selection Statements & Scoping",
+  "topic": "One-Way if Statements, Two-Way if-else Statements, and Block Scoping",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Consider the following code segment. What is printed as a result of executing this code segment?",
+      "code": "int num = 15;\nif (num % 2 == 1 && num < 20) {\n    System.out.print(\"Alpha \");\n}\nif (num > 10) {\n    System.out.print(\"Beta\");\n}",
+      "options": [
+        "Alpha",
+        "Beta",
+        "Alpha Beta",
+        "Nothing is printed"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Both if statements are independent. In the first if statement, 15 % 2 == 1 is true and 15 < 20 is true (true && true = true), so \"Alpha \" is printed. In the second if statement, 15 > 10 is also true, so \"Beta\" is printed. The total output is \"Alpha Beta\"."
+    },
+    {
+      "id": 2,
+      "question": "Consider the following code segment. What is printed as a result of executing this code segment?",
+      "code": "int val = 8;\nif (val > 15);\n{\n    System.out.print(\"Over limit \");\n}\nSystem.out.print(\"Done\");",
+      "options": [
+        "Done",
+        "Over limit Done",
+        "Over limit",
+        "A compilation error occurs because of the semicolon after the if condition"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "The semicolon immediately following if (val > 15); terminates the if statement with an empty body. The subsequent block { System.out.print(\"Over limit \"); } is treated as an independent block statement that executes unconditionally, followed by printing \"Done\". Thus, \"Over limit Done\" is printed."
+    },
+    {
+      "id": 3,
+      "question": "Consider the following code segment. Which of the following best describes what occurs when this code segment is compiled and executed?",
+      "code": "int score = 75;\nif (score >= 70) {\n    String outcome = \"Pass\";\n} else {\n    String outcome = \"Fail\";\n}\nSystem.out.println(outcome);",
+      "options": [
+        "It prints Pass.",
+        "It prints Fail.",
+        "A compilation error occurs because outcome is not in scope outside the if and else blocks.",
+        "A runtime NullPointerException occurs when outcome is evaluated."
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Variables declared inside curly braces { } have local block scope. Both outcome variables exist only within their respective if and else blocks. Attempting to access outcome outside the blocks results in a compilation error because outcome is out of scope."
+    },
+    {
+      "id": 4,
+      "question": "Consider the following code segment with misleading indentation. What is printed as a result of executing this code segment?",
+      "code": "int count = 5;\nif (count > 10)\n    System.out.print(\"High \");\n    System.out.print(\"Alert \");\nSystem.out.print(\"Status\");",
+      "options": [
+        "High Alert Status",
+        "Alert Status",
+        "Status",
+        "Nothing is printed"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Because curly braces { } are omitted, only the single statement immediately following the if statement (System.out.print(\"High \");) belongs to the if block. Since count > 10 is false, that statement is skipped. The remaining statements execute sequentially regardless of the if condition, printing \"Alert Status\"."
+    },
+    {
+      "id": 5,
+      "question": "Consider the following code segment. What is printed as a result of executing this code segment?",
+      "code": "int x = 20;\nint y = 5;\nif (x / y == 4 && x % y == 0) {\n    System.out.print(\"Divisible \");\n} else {\n    System.out.print(\"Not divisible \");\n}\nSystem.out.print(\"Check completed\");",
+      "options": [
+        "Divisible Check completed",
+        "Not divisible Check completed",
+        "Divisible Not divisible Check completed",
+        "Check completed"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "In the condition, x / y is 20 / 5 = 4, so 4 == 4 is true. In x % y, 20 % 5 = 0, so 0 == 0 is true. Since true && true evaluates to true, the if branch executes, printing \"Divisible \". Because if-else branches are mutually exclusive, the else branch is skipped. Sequential execution then prints \"Check completed\"."
+    }
+  ]
+}
