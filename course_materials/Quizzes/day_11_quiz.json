@@ -1,0 +1,72 @@
+{
+  "day_id": "day11",
+  "quiz_title": "AP CS A - Day 11 Exit Quiz: Multi-Way Selection & Nested Conditionals",
+  "topic": "Multi-Way Selection (if-else-if), Condition Ordering, Nested Conditionals, and Dangling Else",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Consider the following code segment. What is printed as a result of executing this code segment?",
+      "code": "int score = 85;\nString grade = \"F\";\n\nif (score >= 60) {\n    grade = \"D\";\n} else if (score >= 70) {\n    grade = \"C\";\n} else if (score >= 80) {\n    grade = \"B\";\n} else if (score >= 90) {\n    grade = \"A\";\n}\n\nSystem.out.println(grade);",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correct_answer_index": 3,
+      "explanation": "In an if-else-if chain, conditions are evaluated sequentially from top to bottom. The first condition that evaluates to true executes its block, and Java skips all subsequent branches. Because 85 >= 60 evaluates to true, grade is assigned \"D\", and the rest of the chain is bypassed."
+    },
+    {
+      "id": 2,
+      "question": "Consider the following code segment. What is printed as a result of executing this code segment?",
+      "code": "int x = 12;\n\nif (x % 3 == 0) {\n    System.out.print(\"Three \");\n}\nif (x % 4 == 0) {\n    System.out.print(\"Four \");\n} else {\n    System.out.print(\"Other \");\n}",
+      "options": [
+        "Three ",
+        "Three Four ",
+        "Four ",
+        "Three Other "
+      ],
+      "correct_answer_index": 1,
+      "explanation": "The first if statement is independent, not linked with an else. Since 12 % 3 == 0 is true, it prints \"Three \". The second statement is a separate if-else structure. Since 12 % 4 == 0 is true, it executes its body and prints \"Four \". The resulting output is \"Three Four \"."
+    },
+    {
+      "id": 3,
+      "question": "Consider the following code segment with improper indentation. What is printed as a result of executing this code segment?",
+      "code": "int x = -2;\nint y = 5;\n\nif (x > 0)\n    if (y > 0)\n        System.out.print(\"Positive\");\nelse\n    System.out.print(\"Non-positive\");",
+      "options": [
+        "Positive",
+        "Non-positive",
+        "PositiveNon-positive",
+        "Nothing is printed"
+      ],
+      "correct_answer_index": 3,
+      "explanation": "Under Java's dangling else rule, an else clause always pairs with the most recent unmatched if statement within the same block level, regardless of indentation. Therefore, the else belongs to if (y > 0). Because the outer condition if (x > 0) evaluates to false (-2 > 0 is false), the entire inner structure (including the else) is bypassed, and nothing is printed."
+    },
+    {
+      "id": 4,
+      "question": "Consider the following nested conditional statement where a and b are initialized integer variables. Which of the following single conditional statements is logically equivalent?",
+      "code": "if (a > 10) {\n    if (b <= 5) {\n        System.out.println(\"Match\");\n    }\n}",
+      "options": [
+        "if (a > 10 || b <= 5) { System.out.println(\"Match\"); }",
+        "if (a > 10 && b <= 5) { System.out.println(\"Match\"); }",
+        "if (!(a <= 10 || b > 5)) { System.out.println(\"Match\"); }",
+        "Both B and C are logically equivalent"
+      ],
+      "correct_answer_index": 3,
+      "explanation": "A nested if statement without intermediate statements executes its inner block only if both the outer condition AND the inner condition are true, which is equivalent to if (a > 10 && b <= 5). Furthermore, applying De Morgan's Laws, !(a <= 10 || b > 5) simplifies directly to (a > 10 && b <= 5). Thus, both B and C represent equivalent logic."
+    },
+    {
+      "id": 5,
+      "question": "A method assigns a shipping rate based on package weight w in pounds. Packages weighing 2.0 lbs or less cost $5.00, packages weighing up to 10.0 lbs cost $10.00, and packages over 10.0 lbs cost $20.00. Which code segment correctly assigns rate for all positive values of w?",
+      "code": "// Option A:\nif (w > 10.0) rate = 20.0;\nelse if (w > 2.0) rate = 10.0;\nelse rate = 5.0;\n\n// Option B:\nif (w <= 2.0) rate = 5.0;\nelse if (w <= 10.0) rate = 10.0;\nelse rate = 20.0;",
+      "options": [
+        "Option A only",
+        "Option B only",
+        "Both Option A and Option B",
+        "Neither option"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Both options correctly partition the domain. Option A evaluates in descending order: weights strictly greater than 10.0 get 20.0, weights between 2.0 (exclusive) and 10.0 (inclusive) get 10.0, and 2.0 or less fall into the else block getting 5.0. Option B evaluates in ascending order: weights <= 2.0 get 5.0, weights between 2.0 (exclusive) and 10.0 (inclusive) get 10.0, and weights > 10.0 fall into the else block getting 20.0."
+    }
+  ]
+}

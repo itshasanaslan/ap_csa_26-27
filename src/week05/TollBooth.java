@@ -5,36 +5,51 @@ public class TollBooth {
     /**
      * Calculates the total toll for a vehicle.
      *
-     * @param vehicleType 1 for Passenger Car, 2 for Commercial Truck
-     * @param passengers  number of occupants in the vehicle (>= 1)
-     * @param isRushHour  true if during peak hours, false otherwise
+     * @param vehicleType    1 for Passenger Car, 2 for Commercial Truck
+     * @param passengers     number of occupants in the vehicle (>= 1) preconditions
+     * @param isRushHour     true if during peak hours, false otherwise
      * @param hasTransponder true if vehicle has an electronic pass, false otherwise
      * @return the final calculated toll fee
      */
     public static double calculateToll(int vehicleType, int passengers, boolean isRushHour, boolean hasTransponder) {
-        
+
         // TODO 1: Declare your toll variable in the outer scope.
         // Watch your scope! If you declare it inside an if block, you cannot return it.
+        double value;
 
         // TODO 2: Determine base rate using a two-way if-else statement.
         // vehicleType 1 -> $5.00, otherwise -> $10.00.
-            
+
+        if (vehicleType == 1) {
+            value = 5;
+        } else {
+            value = 10;
+        }
 
         // TODO 3: Add a $2.50 surcharge if it is rush hour.
+        if (isRushHour) {
+            value += 2.5;
+        }
 
-
-        // TODO 4: Apply a $2.00 carpool discount if the vehicle is a 
+        // TODO 4: Apply a $2.00 carpool discount if the vehicle is a
         // passenger car AND has 3 or more passengers.
+        if (vehicleType == 1 && passengers >= 3) {
+            value -= 2;
+        }
 
-
-        // TODO 5: Add a $3.00 administrative fee if the driver does NOT have a transponder.
-
+        // TODO 5: Add a $3.00 administrative fee if the driver does NOT have a
+        // transponder.
+        if (!hasTransponder) {
+            value += 3;
+        }
 
         // TODO 6: Ensure the toll is never negative (safety floor check).
-
-
+        if (value < 0) {
+            value = 0;
+        }
         // TODO 7: Return the final calculated toll.
-        return 0.0; // Replace with your variable
+
+        return value;
     }
 
     public static void main(String[] args) {
@@ -43,7 +58,8 @@ public class TollBooth {
         // Test 1: Solo car, off-peak, with transponder -> Expected: $5.00
         System.out.println("Test 1: $" + calculateToll(1, 1, false, true) + " (Expected: $5.0)");
 
-        // Test 2: Carpool car (3 passengers), rush hour, with transponder -> Expected: $5.50
+        // Test 2: Carpool car (3 passengers), rush hour, with transponder -> Expected:
+        // $5.50
         System.out.println("Test 2: $" + calculateToll(1, 3, true, true) + " (Expected: $5.5)");
 
         // Test 3: Commercial truck, rush hour, NO transponder -> Expected: $15.50
