@@ -305,22 +305,27 @@
       gap: 12px;
     }
 
-    .option-btn {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      text-align: left;
-      background: rgba(15, 23, 42, 0.6);
-      border: 2px solid var(--card-border);
-      border-radius: 12px;
-      padding: 15px 18px;
-      color: var(--text-main);
-      font-size: 1.05rem;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      font-family: inherit;
-    }
-
+   .option-btn {
+  display: flex;
+  align-items: flex-start; /* Aligns A/B/C/D key to the top when options have multiple lines */
+  width: 100%;
+  text-align: left;
+  background: rgba(15, 23, 42, 0.6);
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  padding: 15px 18px;
+  color: var(--text-main);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+.option-text {
+  white-space: pre-wrap; /* Renders \n as actual line breaks and preserves spacing */
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; /* Optional: clearer for console output options */
+  line-height: 1.45;
+  padding-top: 2px;
+}
     .option-btn:hover:not(:disabled) {
       border-color: #64748b;
       background: rgba(30, 41, 59, 0.9);
@@ -879,11 +884,15 @@
       const labels = ['A', 'B', 'C', 'D', 'E'];
       q.options.forEach((optText, idx) => {
         const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.innerHTML = `<span class="option-key">${labels[idx]}</span><span></span>`;
-        btn.querySelector('span:last-child').textContent = optText;
-        btn.addEventListener('click', () => selectOption(idx));
-        optionsGridEl.appendChild(btn);
+  btn.className = 'option-btn';
+  btn.innerHTML = `<span class="option-key">${labels[idx]}</span><span class="option-text"></span>`;
+  
+  // Converts any literal "\\n" from LLM output into actual "\n" newlines
+  const formattedText = String(optText).replace(/\\n/g, '\n');
+  btn.querySelector('.option-text').textContent = formattedText;
+  
+  btn.addEventListener('click', () => selectOption(idx));
+  optionsGridEl.appendChild(btn);
       });
     }
 
