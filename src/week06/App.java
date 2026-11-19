@@ -34,6 +34,8 @@ public class App {
             else
                 System.out.print("Non-positive");
 
+            int yy = 0;
+            double xl = 5 / yy;
     }
 
     public static void logIn() {
@@ -53,6 +55,8 @@ public class App {
 
         }
 
+
+        
     }
 
 }

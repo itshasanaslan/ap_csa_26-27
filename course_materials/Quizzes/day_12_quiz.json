@@ -1,0 +1,72 @@
+{
+  "day_id": "day12",
+  "quiz_title": "AP CS A - Day 12 Exit Quiz: Object Equality & Null References",
+  "topic": "Comparing Object References (== vs .equals()), Null Reference, NullPointerException, and Short-Circuit Defensive Guarding",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Consider the following code segment. What is printed as a result of executing this code segment?",
+      "code": "String s1 = new String(\"robot\");\nString s2 = new String(\"robot\");\nString s3 = s1;\n\nSystem.out.print((s1 == s2) + \" \");\nSystem.out.print((s1 == s3) + \" \");\nSystem.out.println(s1.equals(s2));",
+      "options": [
+        "true true true",
+        "false true true",
+        "false false true",
+        "true false true"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Variables s1 and s2 were instantiated using the new operator, so they refer to two distinct String objects at different memory addresses on the heap; therefore, s1 == s2 evaluates to false. Assigning s3 = s1 creates an alias pointing to the exact same object as s1, making s1 == s3 true. The .equals() method compares the sequence of characters, which are identical (\"robot\"), evaluating to true."
+    },
+    {
+      "id": 2,
+      "question": "Consider the following code segment where str is a String variable initialized to null. What happens when this code segment executes?",
+      "code": "String str = null;\nif (str.equals(\"AP\")) {\n    System.out.println(\"Match\");\n} else {\n    System.out.println(\"No match\");\n}",
+      "options": [
+        "\"Match\" is printed",
+        "\"No match\" is printed",
+        "A NullPointerException is thrown at runtime",
+        "The code does not compile because null cannot be compared to a String"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "In Java, null indicates that a reference variable does not point to an object in memory. Attempting to invoke an instance method such as .equals() on a null reference causes the Java Virtual Machine to throw a NullPointerException at runtime."
+    },
+    {
+      "id": 3,
+      "question": "A programmer wants to check if a String variable input is not null and contains the word \"exit\". Which of the following code segments correctly uses short-circuit evaluation to safely perform this check without risking a NullPointerException?",
+      "code": null,
+      "options": [
+        "if (input.equals(\"exit\") && input != null)",
+        "if (input != null && input.equals(\"exit\"))",
+        "if (input != null || input.equals(\"exit\"))",
+        "if (input == null && input.equals(\"exit\"))"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "In if (input != null && input.equals(\"exit\")), if input is null, the left condition input != null evaluates to false. Because of short-circuit evaluation in logical AND (&&), Java immediately terminates evaluation of the expression and never executes input.equals(\"exit\"), safely avoiding a NullPointerException."
+    },
+    {
+      "id": 4,
+      "question": "Consider the following method. What is the return value of checkMembership(\"Gold\", new String(\"Gold\"))?",
+      "code": "public static String checkMembership(String tier1, String tier2) {\n    if (tier1 == tier2) {\n        return \"Identical Reference\";\n    } else if (tier1.equals(tier2)) {\n        return \"Matching Content\";\n    } else {\n        return \"Different\";\n    }\n}",
+      "options": [
+        "\"Identical Reference\"",
+        "\"Matching Content\"",
+        "\"Different\"",
+        "Compilation error"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "tier1 refers to a String literal in the string pool, while tier2 is instantiated explicitly using new String(\"Gold\"), placing it in a different heap location. Because they reside at different memory addresses, tier1 == tier2 evaluates to false. Execution proceeds to the else if condition where tier1.equals(tier2) compares their characters, evaluating to true and returning \"Matching Content\"."
+    },
+    {
+      "id": 5,
+      "question": "Consider the following code segment. Which of the following expressions is guaranteed to evaluate to true without throwing a NullPointerException, regardless of whether String variable code is null or initialized to \"SECRET\"?",
+      "code": "String code; // may be null or any String value",
+      "options": [
+        "code.equals(\"SECRET\")",
+        "\"SECRET\".equals(code)",
+        "code != null || code.equals(\"SECRET\")",
+        "code == \"SECRET\""
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Because the literal \"SECRET\" is guaranteed to be a non-null String object, calling the .equals() method on it is always safe. If code is null, \"SECRET\".equals(null) simply returns false without throwing an exception. In contrast, calling code.equals(...) when code is null causes a NullPointerException."
+    }
+  ]
+}
